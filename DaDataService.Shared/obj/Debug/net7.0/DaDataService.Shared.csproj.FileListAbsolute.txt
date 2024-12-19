@@ -1,0 +1,12 @@
+C:\DaDataService\DaDataService.Shared\bin\Debug\net7.0\DaDataService.Shared.deps.json
+C:\DaDataService\DaDataService.Shared\bin\Debug\net7.0\DaDataService.Shared.dll
+C:\DaDataService\DaDataService.Shared\bin\Debug\net7.0\DaDataService.Shared.pdb
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\DaDataService.Shared.csproj.AssemblyReference.cache
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\DaDataService.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\DaDataService.Shared.AssemblyInfoInputs.cache
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\DaDataService.Shared.AssemblyInfo.cs
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\DaDataService.Shared.csproj.CoreCompileInputs.cache
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\DaDataService.Shared.dll
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\refint\DaDataService.Shared.dll
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\DaDataService.Shared.pdb
+C:\DaDataService\DaDataService.Shared\obj\Debug\net7.0\ref\DaDataService.Shared.dll

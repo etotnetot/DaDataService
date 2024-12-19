@@ -18,7 +18,7 @@ namespace DaDataService.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAddressStandardization([FromQuery] AddressRequestInputModel requestLink) 
         {
-            return await Ok(_addressStandardizationService.GetAddressStandardization(requestLink));
+            return Ok(await _addressStandardizationService.GetAddressStandardization(requestLink));
         }
     }
 }
