@@ -45,3 +45,4 @@ C:\DaDataService\DaDataService.API\bin\Debug\net7.0\Serilog.dll
 C:\DaDataService\DaDataService.API\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
 C:\DaDataService\DaDataService.API\bin\Debug\net7.0\System.Diagnostics.DiagnosticSource.dll
 C:\DaDataService\DaDataService.API\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\DaDataService\DaDataService.API\obj\Debug\net7.0\DaDataService.API.MvcApplicationPartsAssemblyInfo.cs
