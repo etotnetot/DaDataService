@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XRvzTowW6s5/jTQQIFVQjo586OS7nhzY9nqsw1UyF651CkGjhJxlIewxpGSNb6H5dwzjnDvWOK8FZkTD9MKbLw==",
+  "dgSpecHash": "R+7XZZ5H0sbMIywjzOFywYM8PnvBRiNgK6c2iGljGXNsGWX3fXKKGOGGodhUPVnkFyAFF4LaFgE6j6ZyvsKl/w==",
   "success": true,
-  "projectFilePath": "C:\\DaDataService\\DaDataService\\DaDataService.csproj",
+  "projectFilePath": "C:\\DaDataService\\DaDataService.API\\DaDataService.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dimad\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "C:\\Users\\dimad\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

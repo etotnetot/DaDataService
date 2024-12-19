@@ -465,11 +465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\DaDataService\\DaDataService\\DaDataService.csproj",
-      "projectName": "DaDataService",
-      "projectPath": "C:\\DaDataService\\DaDataService\\DaDataService.csproj",
+      "projectUniqueName": "C:\\DaDataService\\DaDataService.API\\DaDataService.API.csproj",
+      "projectName": "DaDataService.API",
+      "projectPath": "C:\\DaDataService\\DaDataService.API\\DaDataService.API.csproj",
       "packagesPath": "C:\\Users\\dimad\\.nuget\\packages\\",
-      "outputPath": "C:\\DaDataService\\DaDataService\\obj\\",
+      "outputPath": "C:\\DaDataService\\DaDataService.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dimad\\AppData\\Roaming\\NuGet\\NuGet.Config",
