@@ -1,0 +1,15 @@
+C:\DaDataService\DaDataService.BLL\bin\Debug\net7.0\DaDataService.BLL.deps.json
+C:\DaDataService\DaDataService.BLL\bin\Debug\net7.0\DaDataService.BLL.dll
+C:\DaDataService\DaDataService.BLL\bin\Debug\net7.0\DaDataService.BLL.pdb
+C:\DaDataService\DaDataService.BLL\bin\Debug\net7.0\DaDataService.Shared.dll
+C:\DaDataService\DaDataService.BLL\bin\Debug\net7.0\DaDataService.Shared.pdb
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.csproj.AssemblyReference.cache
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.AssemblyInfoInputs.cache
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.AssemblyInfo.cs
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.csproj.CoreCompileInputs.cache
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.csproj.CopyComplete
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.dll
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\refint\DaDataService.BLL.dll
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\DaDataService.BLL.pdb
+C:\DaDataService\DaDataService.BLL\obj\Debug\net7.0\ref\DaDataService.BLL.dll
