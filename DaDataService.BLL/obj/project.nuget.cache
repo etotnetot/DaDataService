@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "VYGSPBO/xKh6Y20/g6rI9sCGpi/kl63UGqBq2Dn4M9OtCUuiYtQAotKcdwC19584lOPZ9m1bTRShT0uC+ob6kQ==",
+  "dgSpecHash": "pxXJY2ria2FYwgpxyeLg+ruB3K1EWGPeKJwC9DDvB7oqetdpqErPUVEBFciFq2nQNToTAmCFqAY+i/cAemAKuA==",
   "success": true,
   "projectFilePath": "C:\\DaDataService\\DaDataService.BLL\\DaDataService.BLL.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\dimad\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\dimad\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\dimad\\.nuget\\packages\\microsoft.extensions.options\\9.0.0\\microsoft.extensions.options.9.0.0.nupkg.sha512",
+    "C:\\Users\\dimad\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.0\\microsoft.extensions.primitives.9.0.0.nupkg.sha512",
+    "C:\\Users\\dimad\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\dimad\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\dimad\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
