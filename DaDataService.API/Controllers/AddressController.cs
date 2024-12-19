@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DaDataService.API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class AddressController : ControllerBase
     {
         private readonly IAddressStandardizationService _addressStandardizationService;
@@ -15,10 +15,18 @@ namespace DaDataService.API.Controllers
             _addressStandardizationService = addressStandardizationService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAddressStandardization([FromQuery] AddressRequestInputModel requestLink) 
+        /// <summary>
+        /// Retrieves standardized address.
+        /// </summary>
+        /// <param name="requestInputModel">Address to standardize.</param>
+        /// <returns>Standardized address.</returns>
+        [HttpGet("GetAddressStandardization")]
+        public async Task<IActionResult> GetAddressStandardization([FromQuery] AddressRequestInputModel requestInputModel) 
         {
-            return Ok(await _addressStandardizationService.GetAddressStandardization(requestLink));
+            if (string.IsNullOrWhiteSpace(requestInputModel.InputAddress))
+                return BadRequest(new { Message = "Address cannot be null or empty" });
+
+            return Ok(await _addressStandardizationService.GetAddressStandardization(requestInputModel));
         }
     }
 }

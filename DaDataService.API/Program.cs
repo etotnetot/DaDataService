@@ -1,3 +1,4 @@
+using AutoMapper;
 using DaDataService.API.Middlewares;
 using DaDataService.BLL.Mappers;
 using DaDataService.BLL.Services;
@@ -5,63 +6,70 @@ using DaDataService.Shared.Models;
 using Microsoft.Extensions.Options;
 using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Configuration.AddJsonFile("appsettings.json");
-builder.Services.Configure<DaDataServiceOptions>(builder.Configuration.GetSection("DaData"));
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddCors(options =>
+namespace DaDataService.API
 {
-    options.AddDefaultPolicy(builder =>
+    internal class Program
     {
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-    });
-});
+        static void ConfigureServices(WebApplicationBuilder builder)
+        {
+            builder.Configuration.AddJsonFile("appsettings.json");
+            builder.Services.Configure<DaDataServiceOptions>(builder.Configuration.GetSection("DaData"));
 
-builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+            builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
 
-builder.Services.AddAutoMapper(typeof(AddressProfile));
+            builder.Services.AddAutoMapper(typeof(AddressProfile));
+            builder.Services.AddHttpClient<AddressStandardizationHttpClient>(client =>
+            {
+                client.BaseAddress = new Uri(builder.Configuration["DaData:BaseUrl"]);
+            });
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-    });
-});
+            builder.Services.AddTransient<IAddressStandardizationService>(provider =>
+            {
+                var httpClientFactory = provider.GetRequiredService<IHttpClientFactory>();
+                var httpClient = httpClientFactory.CreateClient(nameof(AddressStandardizationHttpClient));
+                var dataServiceOptions = provider.GetRequiredService<IOptions<DaDataServiceOptions>>();
+                var addressMapper = provider.GetRequiredService<IMapper>();
 
-builder.Services.AddHttpClient<AddressStandardizationHttpClient>(client =>
-{
-    client.BaseAddress = new Uri(builder.Configuration["DaData:BaseUrl"]);
-});
+                return new AddressStandardizationService(httpClient, dataServiceOptions, addressMapper);
+            });
 
-builder.Services.AddTransient<IAddressStandardizationService>(provider =>
-{
-    var httpClientFactory = provider.GetRequiredService<IHttpClientFactory>();
-    var httpClient = httpClientFactory.CreateClient(nameof(AddressStandardizationHttpClient));
-    var options = provider.GetRequiredService<IOptions<DaDataServiceOptions>>();
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy
+                (
+                    policy => policy.WithOrigins("http://cleaner.dadata.ru/")
+                );
+            });
+        }
 
-    return new AddressStandardizationService(httpClient, options);
-});
+        static void ConfigureMiddleware(WebApplication app)
+        {
+            app.UseMiddleware<ExceptionMiddleware>();
 
-var app = builder.Build();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
-app.UseMiddleware<ExceptionMiddleware>();
+            app.UseHttpsRedirection();
+            app.UseAuthorization();
+            app.MapControllers();
+            app.Run();
+        }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+        static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            ConfigureServices(builder);
+
+            var app = builder.Build();
+            ConfigureMiddleware(app);
+
+            app.Run();
+        }
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

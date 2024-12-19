@@ -2,6 +2,9 @@
 
 namespace DaDataService.API.Middlewares
 {
+    /// <summary>
+    /// Middleware for handling exceptions in the application
+    /// </summary>
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next; 
@@ -19,11 +22,11 @@ namespace DaDataService.API.Middlewares
             {
                 await _next(context);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                _logger.LogError(ex, "Произошла ошибка во время обработки запроса");
+                _logger.LogError(exception, "An error occurred while processing the request");
 
-                await HandleExceptionAsync(context, ex);
+                await HandleExceptionAsync(context, exception);
             }
         }
 
@@ -35,8 +38,8 @@ namespace DaDataService.API.Middlewares
             var response = new
             {
                 StatusCode = context.Response.StatusCode,
-                Message = "Внутренняя ошибка сервера. Обратитесь в службу поддержки.",
-                Detailed = exception.Message 
+                Message = "Internal Server Error",
+                Information = exception.Message 
             };
 
             return context.Response.WriteAsJsonAsync(response);

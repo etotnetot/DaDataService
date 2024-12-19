@@ -1,7 +1,7 @@
-﻿using DaDataService.Shared.Models;
+﻿using AutoMapper;
+using DaDataService.Shared.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Text;
 
 namespace DaDataService.BLL.Services
@@ -12,21 +12,28 @@ namespace DaDataService.BLL.Services
 
         private readonly IOptions<DaDataServiceOptions> _daDataServiceOptions;
 
-        public AddressStandardizationService(HttpClient httpClient, IOptions<DaDataServiceOptions> daDataServiceOptions)
+        private readonly IMapper _addressMapper;
+
+        public AddressStandardizationService(HttpClient httpClient, IOptions<DaDataServiceOptions> daDataServiceOptions, IMapper addressMapper)
         {
             _httpClient = httpClient;
             _daDataServiceOptions = daDataServiceOptions;
+            _addressMapper = addressMapper;
         }
 
+        /// <summary>
+        /// Retrieves standardized address.
+        /// </summary>
+        /// <param name="addressRequestInputModel">Address to standardize.</param>
+        /// <returns>Standardized address, which contains such information as country, city, street, house and flat number.</returns>
         public async Task<AddressResponseViewModel> GetAddressStandardization(AddressRequestInputModel addressRequestInputModel)
         {
             var apiKey = _daDataServiceOptions.Value.ApiKey; 
             var apiSecret = _daDataServiceOptions.Value.SecretKey;
             var baseUrl = _daDataServiceOptions.Value.BaseUrl;
 
-            var address = new string[] { addressRequestInputModel.InputRawAddress };
             var content = new StringContent(
-                JsonConvert.SerializeObject(address),
+                JsonConvert.SerializeObject(new string[] { addressRequestInputModel.InputAddress }),
                 Encoding.UTF8,
                 "application/json");
 
@@ -38,17 +45,9 @@ namespace DaDataService.BLL.Services
             response.EnsureSuccessStatusCode();
 
             var responseData = await response.Content.ReadAsStringAsync();
-            var parsedResponse = JArray.Parse(responseData);
-            var standardizedData = parsedResponse[0];
+            var deserializedResponseData = JsonConvert.DeserializeObject<AddressResponseModel[]>(responseData);
 
-            return new AddressResponseViewModel
-            {
-                Country = standardizedData["country"]?.ToString(),
-                City = standardizedData["city"]?.ToString(),
-                Street = standardizedData["street"]?.ToString(),
-                House = standardizedData["house"]?.ToString(),
-                Flat = standardizedData["flat"]?.ToString()
-            };
+            return _addressMapper.Map<AddressResponseViewModel>(deserializedResponseData[0]);
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class AddressRequestInputModel
     {
-        public string InputRawAddress { get; set; }
+        public string InputAddress { get; set; }
     }
 }
